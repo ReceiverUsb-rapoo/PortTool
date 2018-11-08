@@ -142,11 +142,11 @@ bool UsbOperator::FindUsbDevicePort(const uint &un_Pid,
 
             do{
                 ld_pDeviceParent = libusb_get_parent(ld_pDeviceParent);
-                if(ld_pDeviceParent){
+                if(ld_pDeviceParent && libusb_get_port_number(ld_pDeviceParent) != 0){
                     str_PortName += QString::number(libusb_get_port_number(ld_pDeviceParent));
                 }
 
-                qDebug()<<"libusb_get_parent";
+            qDebug()<<"libusb_get_parent";
             }while(ld_pDeviceParent);
 
             qDebug()<<"str_PortName"<<str_PortName;

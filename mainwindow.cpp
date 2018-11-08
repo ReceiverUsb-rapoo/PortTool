@@ -65,6 +65,8 @@ void MainWindow::slot_RunComplete()
     m_pUsbOperator->GetDevicePort(list_DevicePort);
 
     ui->le_Address->setText(ui->cb_Address->currentText());
-    ui->le_Port->setText(QString::number(list_DevicePort.at(0)));
+    if(!list_DevicePort.isEmpty()){
+        ui->le_Port->setText(QString::number(list_DevicePort.at(0)));
+    }
 }
 
